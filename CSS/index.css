@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+:root,body{
+    height: 100%;
+    width: 100%;
+    background-color: black;
+}
+/* 最外层容器样式 */
+.container{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: calc(50% - 100px);
+    left: calc(50% - 100px);
+}
+/*立方体容器样式*/
+.cube{
+    width: 200px;
+    height: 200px;
+}
+ 
+.cube div{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+}
+/* 外面照片大小设置 */
+.out_pic{
+    width: 200px;
+    height: 200px;
+}
+ 
+.cube #small{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 50px;
+    left: 50px;
+}
+/* 里面照片大小设置 */
+.in_pic{
+    width: 100px;
+    height: 100px;
+}

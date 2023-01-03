@@ -1,386 +1,353 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title></title>
-    <script src="js/jquery.min.js"></script>
-  </head>
-  <style>
-    * {
-      padding: 0;
-      margin: 0;
-    }
-    html,
-    body {
-      height: 100%;
-      padding: 0;
-      margin: 0;
-      background: #000;
-    }
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>流星雨3D旋转相册</title>
+<link rel="stylesheet" href="style.css">
+<style>
+*{margin: 0;padding: 0;}
+html,body{height:100%}
+body{
+  display: flex;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  background: #0c0c0c;
+  height:100%;
+  width:100%;
+}
+#box{
+  z-index:9999;
+  position: relative;
+  display: flex;
+  width: 130px;
+  height: 200px;
+  margin: auto;
+  transform-style: preserve-3d; 
+transform: rotateX(-10deg);
+  }
+  #box > div{
+transform-style: preserve-3d; 
+position: absolute;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+line-height: 200px;
+font-size: 50px;
+text-align: center;
+box-shadow:0 0 10px #fff;
+-webkit-box-reflect:below 10px -webkit-linear-gradient(top,rgba(0,0,0,0) 40%,rgba(0,0,0,.8) 100%);
+  }
+  
+  #box p{
+position: absolute;
+left: 0;
+top: 0;
+bottom: 0;
+right: 0;
+margin: auto;
+width: 1200px;
+height: 1200px;
+background: -webkit-radial-gradient(center center,600px 600px,rgba(50,50,50,1),rgba(0,0,0,0));
+border-radius: 50%;
+transform: rotateX(90deg) translate3d(-600px,0,-105px);
+  }
 
-    .aa {
-      position: fixed;
-      left: 50%;
-      bottom: 10px;
-      color: #ccc;
-    }
+#codepen-link {
+ position: absolute;
+ bottom: 30px;
+ right: 30px;
+ height: 40px;
+ width: 40px;
+ z-index: 10;
+ border-radius: 50%;
+ box-sizing: border-box;
+ background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/544318/logo.jpg");
+ background-position: center center;
+ background-size: cover;
+ opacity: 0.5;
+ -webkit-transition: all 0.25s;
+ transition: all 0.25s;
+}
+ 
+#codepen-link:hover {
+ opacity: 0.8;
+ box-shadow: 0 0 6px #efefef;
+}
+ </style>
 
-    .container {
-      width: 100%;
-      height: 100%;
-    }
-    canvas {
-      z-index: 99;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
-  </style>
-  <body>
-    <!-- 樱花 -->
-    <div id="jsi-cherry-container" class="container">
-      <audio autoplay="autopaly">
-        <source src="renxi.mp3" type="audio/mp3" />
-      </audio>
-      <img class="img" src="./123.png" alt="" />
-      <!-- 爱心 -->
-      <canvas id="pinkboard" class="container"> </canvas>
-    </div>
+</head>
+<body>
 
-  </body>
-</html>
+ <!-- 相册 -->
+<div id="box">
+ <div></div>
+ <div></div>
+ <div></div>
+ <div></div>
+ <div></div>
+ <div></div>
+ <div></div>
+ <div></div>
+ <div></div>
+ <div></div>
+ <p></p>
+</div>
+<!-- 流星 -->
+
+<script id="jqbb" src="https://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+
 <script>
-    /*
-     * Settings
-     */
-    var settings = {
-      particles: {
-        length: 500, // maximum amount of particles
-        duration: 2, // particle duration in sec
-        velocity: 100, // particle velocity in pixels/sec
-        effect: -0.75, // play with this for a nice effect
-        size: 30, // particle size in pixels
-      },
-    };
+setTimeout(init,100);
+function init(){
+ var obox = document.getElementById('box'),
+  aDiv = obox.getElementsByTagName('div');
+  
+  for (var i = 0; i < aDiv.length; i++) {
+aDiv[i].style.background = "url(img/"+(i+1)+".jpg) center/cover";
+aDiv[i].style.transform = "rotateY("+(i*36)+"deg) translate3d(0,0,350px)";
+aDiv[i].style.transition = "transform 1s "+(aDiv.length-i)*0.2+"s";
+  }
+ var sX,
+  sY,
+  nX,
+  nY,
+  desX = 0,
+  desY = 0,
+  tX = 0,
+  tY = 10,
+  index = 0;//滚轮初始值
+ document.onmousedown = function(e){
+  clearInterval(obox.timer);
+  e = e || window.event;
+  var sX = e.clientX,
+sY = e.clientY;
+this.onmousemove = function(e){
+ e = e || window.event;
+ var nX = e.clientX,
+  nY = e.clientY;
+// 当前点的坐标和前一点的坐标差值
+  desX = nX - sX;
+  desY = nY - sY;
+  tX += desX*0.1; 
+  tY += desY*0.1;
 
-    (function () {
-      var b = 0;
-      var c = ["ms", "moz", "webkit", "o"];
-      for (var a = 0; a < c.length && !window.requestAnimationFrame; ++a) {
-        window.requestAnimationFrame = window[c[a] + "RequestAnimationFrame"];
-        window.cancelAnimationFrame =
-          window[c[a] + "CancelAnimationFrame"] ||
-          window[c[a] + "CancelRequestAnimationFrame"];
-      }
-      if (!window.requestAnimationFrame) {
-        window.requestAnimationFrame = function (h, e) {
-          var d = new Date().getTime();
-          var f = Math.max(0, 16 - (d - b));
-          var g = window.setTimeout(function () {
-            h(d + f);
-          }, f);
-          b = d + f;
-          return g;
-        };
-      }
-      if (!window.cancelAnimationFrame) {
-        window.cancelAnimationFrame = function (d) {
-          clearTimeout(d);
-        };
-      }
-    })();
+  obox.style.transform = "rotateX("+(-tY)+"deg) rotateY("+tX+"deg)";
+  sX = nX;
+  sY = nY;
+}
+this.onmouseup = function(){
+ this.onmousemove = this.onmouseup = null;
+ obox.timer = setInterval(function(){
+  desX *= 0.95;
+  desY *= 0.95;
+  tX += desX*0.1;
+  tY += desY*0.1;
+  obox.style.transform = "rotateX("+(-tY)+"deg) rotateY("+tX+"deg)";
+  if (Math.abs(desX)<0.5 && Math.abs(desY)<0.5) {
+clearInterval(obox.timer);
+  }
+ },13);
+}
+  return false;
+ }
+ //滚轮放大缩小
+ mousewheel(document,function(e){
+  e = e || window.event;
+  var d = e.wheelDelta/120 || -e.detail/3;
+if (d>0) {
+ index-=20;
+}else{
+ index+=30;
+}
+(index<(-1050)&&(index=(-1050)));
+  document.body.style.perspective = 1000 + index + "px";
+ })
+ function mousewheel(obj,fn){
+  document.onmousewheel===null?obj.onmousewheel=fn:addEvent(obj,"DOMMouseScroll",fn)
+ }
+ function addEvent(obj,eName,fn){
+  obj.attachEvent?obj.attachEvent("on"+eName,fn):obj.addEventListener(eName,fn);
+ }
+}
+</script>
 
-    /*
-     * Point class
-     */
-    var Point = (function () {
-      function Point(x, y) {
-        this.x = typeof x !== "undefined" ? x : 0;
-        this.y = typeof y !== "undefined" ? y : 0;
-      }
-      Point.prototype.clone = function () {
-        return new Point(this.x, this.y);
-      };
-      Point.prototype.length = function (length) {
-        if (typeof length == "undefined")
-          return Math.sqrt(this.x * this.x + this.y * this.y);
-        this.normalize();
-        this.x *= length;
-        this.y *= length;
-        return this;
-      };
-      Point.prototype.normalize = function () {
-        var length = this.length();
-        this.x /= length;
-        this.y /= length;
-        return this;
-      };
-      return Point;
-    })();
+<script>
+ (function(window, document) {
+  var Vector2 = (function() {
+function Vector2(x, y) {
+ this.x = x || 0;
+ this.y = y || 0;
+}
+return Vector2;
+  })();
 
-    /*
-     * Particle class
-     */
-    var Particle = (function () {
-      function Particle() {
-        this.position = new Point();
-        this.velocity = new Point();
-        this.acceleration = new Point();
-        this.age = 0;
-      }
-      Particle.prototype.initialize = function (x, y, dx, dy) {
-        this.position.x = x;
-        this.position.y = y;
-        this.velocity.x = dx;
-        this.velocity.y = dy;
-        this.acceleration.x = dx * settings.particles.effect;
-        this.acceleration.y = dy * settings.particles.effect;
-        this.age = 0;
-      };
-      Particle.prototype.update = function (deltaTime) {
-        this.position.x += this.velocity.x * deltaTime;
-        this.position.y += this.velocity.y * deltaTime;
-        this.velocity.x += this.acceleration.x * deltaTime;
-        this.velocity.y += this.acceleration.y * deltaTime;
-        this.age += deltaTime;
-      };
-      Particle.prototype.draw = function (context, image) {
-        function ease(t) {
-          return --t * t * t + 1;
-        }
-        var size = image.width * ease(this.age / settings.particles.duration);
-        context.globalAlpha = 1 - this.age / settings.particles.duration;
-        context.drawImage(
-          image,
-          this.position.x - size / 2,
-          this.position.y - size / 2,
-          size,
-          size
-        );
-      };
-      return Particle;
-    })();
+  Vector2.prototype.add = function(addend) {
+this.x += addend.x;
+this.y += addend.y;
+  };
 
-    /*
-     * ParticlePool class
-     */
-    var ParticlePool = (function () {
-      var particles,
-        firstActive = 0,
-        firstFree = 0,
-        duration = settings.particles.duration;
+  var RainDrop = (function() {
+function RainDrop(parent) {
+ this.size = 2;
+ this.parent = parent;
+ this.init();
+}
+return RainDrop;
+  })();
 
-      function ParticlePool(length) {
-        // create and populate particle pool
-        particles = new Array(length);
-        for (var i = 0; i < particles.length; i++)
-          particles[i] = new Particle();
-      }
-      ParticlePool.prototype.add = function (x, y, dx, dy) {
-        particles[firstFree].initialize(x, y, dx, dy);
+  RainDrop.prototype.init = function() {
+this.life = 0;
+this.ttl = Math.random() * 500 + 300;
+this.position = new Vector2(Math.random() * window.innerWidth, 0);
+this.velocity = new Vector2(
+ 0.5 - Math.random() * 1,
+ Math.random() * 1 + 0.2
+);
+this.terminalVelocity = 8;
+  };
 
-        // handle circular queue
-        firstFree++;
-        if (firstFree == particles.length) firstFree = 0;
-        if (firstActive == firstFree) firstActive++;
-        if (firstActive == particles.length) firstActive = 0;
-      };
-      ParticlePool.prototype.update = function (deltaTime) {
-        var i;
+  RainDrop.prototype.update = function() {
+if (
+ this.position.x > window.innerWidth ||
+ this.position.x < -this.size ||
+ this.life > this.ttl
+)
+ this.init();
+if (this.position.y > this.parent.floor) {
+ this.position.y = this.parent.floor - this.size;
+ this.velocity.y *= -0.2 - Math.random() * 0.2;
+}
+this.life++;
+this.position.add(this.velocity);
+this.velocity.y += 0.1;
+  };
 
-        // update active particles
-        if (firstActive < firstFree) {
-          for (i = firstActive; i < firstFree; i++)
-            particles[i].update(deltaTime);
-        }
-        if (firstFree < firstActive) {
-          for (i = firstActive; i < particles.length; i++)
-            particles[i].update(deltaTime);
-          for (i = 0; i < firstFree; i++) particles[i].update(deltaTime);
-        }
+  var Rain = (function() {
+function Rain(args) {
+ this.props = args;
+ this.rainDrops = [];
+ this.init();
+}
+return Rain;
+  })();
 
-        // remove inactive particles
-        while (
-          particles[firstActive].age >= duration &&
-          firstActive != firstFree
-        ) {
-          firstActive++;
-          if (firstActive == particles.length) firstActive = 0;
-        }
-      };
-      ParticlePool.prototype.draw = function (context, image) {
-        // draw active particles
-        if (firstActive < firstFree) {
-          for (i = firstActive; i < firstFree; i++)
-            particles[i].draw(context, image);
-        }
-        if (firstFree < firstActive) {
-          for (i = firstActive; i < particles.length; i++)
-            particles[i].draw(context, image);
-          for (i = 0; i < firstFree; i++) particles[i].draw(context, image);
-        }
-      };
-      return ParticlePool;
-    })();
+  Rain.prototype.init = function() {
+this.createCanvas();
+this.resize();
+this.loop();
+  };
 
-    /*
-     * Putting it all together
-     */
-    (function (canvas) {
-      var context = canvas.getContext("2d"),
-        particles = new ParticlePool(settings.particles.length),
-        particleRate =
-          settings.particles.length / settings.particles.duration, // particles/sec
-        time;
+  Rain.prototype.resize = function() {
+var attr =
+ "position: absolute; z-index: 0; top: 0; left: 0; height: 100vh; width: 100vw;";
 
-      // get point on heart with -PI <= t <= PI
-      function pointOnHeart(t) {
-        return new Point(
-          160 * Math.pow(Math.sin(t), 3),
-          130 * Math.cos(t) -
-            50 * Math.cos(2 * t) -
-            20 * Math.cos(3 * t) -
-            10 * Math.cos(4 * t) +
-            25
-        );
-      }
+this.canvas.setAttribute("style", attr);
 
-      // creating the particle image using a dummy canvas
-      var image = (function () {
-        var canvas = document.createElement("canvas"),
-          context = canvas.getContext("2d");
-        canvas.width = settings.particles.size;
-        canvas.height = settings.particles.size;
-        // helper function to create the path
-        function to(t) {
-          var point = pointOnHeart(t);
-          point.x =
-            settings.particles.size / 2 +
-            (point.x * settings.particles.size) / 350;
-          point.y =
-            settings.particles.size / 2 -
-            (point.y * settings.particles.size) / 350;
-          return point;
-        }
-        // create the path
-        context.beginPath();
-        var t = -Math.PI;
-        var point = to(t);
-        context.moveTo(point.x, point.y);
-        while (t < Math.PI) {
-          t += 0.01; // baby steps!
-          point = to(t);
-          context.lineTo(point.x, point.y);
-        }
-        context.closePath();
-        // create the fill
-        context.fillStyle = "#ea80b0";
-        context.fill();
-        // create the image
-        var image = new Image();
-        image.src = canvas.toDataURL();
-        return image;
-      })();
+this.dimensions = {
+ width: window.innerWidth,
+ height: window.innerHeight
+};
 
-      // render that thing!
-      function render() {
-        // next animation frame
-        requestAnimationFrame(render);
+this.canvas.width = this.dimensions.width;
+this.canvas.height = this.dimensions.height;
+this.floor = this.dimensions.height * 0.7;
+  };
 
-        // update time
-        var newTime = new Date().getTime() / 1000,
-          deltaTime = newTime - (time || newTime);
-        time = newTime;
+  Rain.prototype.createCanvas = function() {
+this.canvas = document.createElement("canvas");
 
-        // clear canvas
-        context.clearRect(0, 0, canvas.width, canvas.height);
+this.ctx = this.canvas.getContext("2d");
 
-        // create new particles
-        var amount = particleRate * deltaTime;
-        for (var i = 0; i < amount; i++) {
-          var pos = pointOnHeart(Math.PI - 2 * Math.PI * Math.random());
-          var dir = pos.clone().length(settings.particles.velocity);
-          particles.add(
-            canvas.width / 2 + pos.x,
-            canvas.height / 2 - pos.y,
-            dir.x,
-            -dir.y
-          );
-        }
+document.body.appendChild(this.canvas);
+  };
 
-        // update and draw particles
-        particles.update(deltaTime);
-        particles.draw(context, image);
-      }
+  Rain.prototype.draw = function() {
+this.ctx.fillStyle = this.props.backgroundColor;
+this.ctx.fillRect(0, 0, this.dimensions.width, this.floor);
+for (var i = 0, len = this.rainDrops.length; i < len; i++) {
+ var rainDrop = this.rainDrops[i];
+ rainDrop.update();
+ this.ctx.fillStyle = this.props.rainColor;
+ this.ctx.fillRect(
+  rainDrop.position.x,
+  rainDrop.position.y,
+  rainDrop.size,
+  rainDrop.size
+ );
+}
+this.reflect();
+  };
 
-      // handle (re-)sizing of the canvas
-      function onResize() {
-        canvas.width = canvas.clientWidth;
-        canvas.height = canvas.clientHeight;
-      }
-      window.onresize = onResize;
+  Rain.prototype.reflect = function() {
+var grad = this.ctx.createLinearGradient(
+ this.dimensions.width / 2,
+ this.floor * 0.6,
+ this.dimensions.width / 2,
+ this.floor
+);
+grad.addColorStop(0, "rgba(20,30,40,1)");
+grad.addColorStop(1, "rgba(20,30,40,0)");
+this.ctx.save();
+this.ctx.scale(1, -1);
+this.ctx.translate(0, this.floor * -2);
+this.ctx.filter = "blur(2px) saturate(150%)";
+this.ctx.drawImage(
+ this.canvas,
+ 0,
+ 0,
+ this.dimensions.width,
+ this.floor,
+ 0,
+ 0,
+ this.dimensions.width,
+ this.floor
+);
+this.ctx.fillStyle = grad;
+this.ctx.fillRect(0, 0, this.dimensions.width, this.floor);
+this.ctx.restore();
+  };
 
-      // delay rendering bootstrap
-      setTimeout(function () {
-        onResize();
-        render();
-      }, 10);
-    })(document.getElementById("pinkboard"));
-  </script>
+  Rain.prototype.loop = function() {
+var timeout,
+ self = this;
+if (self.rainDrops.length < self.props.rainDropCount) {
+ timeout = window.setTimeout(function() {
+  self.rainDrops.push(new RainDrop(self));
+ }, Math.random() * 200);
+} else if (timeout) {
+ timeout = null;
+ window.clearTimeout(timeout);
+}
+self.draw();
+window.requestAnimationFrame(self.loop.bind(self));
+  };
 
-  <script>
-    var RENDERER = {
-      INIT_CHERRY_BLOSSOM_COUNT: 30,
-      MAX_ADDING_INTERVAL: 10,
+  window.onload = function() {
+var args = {
+ rainDropCount: 500,
+ rainColor: "rgba(150,180,255,0.8)",
+ backgroundColor: "rgba(10,10,10,0.5)"
+};
 
-      init: function () {
-        this.setParameters();
-        this.reconstructMethods();
-        this.createCherries();
-        this.render();
-        if (
-          navigator.userAgent.match(
-            /(phone|pod|iPhone|iPod|ios|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
-          )
-        ) {
-          // var box = document.querySelectorAll(".box")[0];
-          // console.log(box, "移动端");
-          // box.style.marginTop = "65%";
-        }
-      },
-      setParameters: function () {
-        this.$container = $("#jsi-cherry-container");
-        this.width = this.$container.width();
-        this.height = this.$container.height();
-        this.context = $("<canvas />")
-          .attr({ width: this.width, height: this.height })
-          .appendTo(this.$container)
-          .get(0)
-        var rate = this.FOCUS_POSITION / (this.z + this.FOCUS_POSITION),
-          x = this.renderer.width / 2 + this.x * rate,
-          y = this.renderer.height / 2 - this.y * rate;
-        return { rate: rate, x: x, y: y };
-      },
-      re
-          }
-        } else {
-          this.phi += Math.PI / (axis.y == this.thresholdY ? 200 : 500);
-          this.phi %= Math.PI;
-        }
-        if (this.y <= -this.renderer.height * this.SURFACE_RATE) {
-          this.x += 2;
-          this.y = -this.renderer.height * this.SURFACE_RATE;
-        } else {
-          this.x += this.vx;
-          this.y += this.vy;
-        }
-        return (
-          this.z > -this.FOCUS_POSITION &&
-          this.z < this.FAR_LIMIT &&
-          this.x < this.renderer.width * 1.5
-        );
-      },
-    };
-    $(function () {
-      RENDERER.init();
-    });
-  </script>
+
+  };
+
+  window.requestAnimationFrame = (function() {
+return (
+ window.requestAnimationFrame ||
+ window.webkitRequestAnimationFrame ||
+ window.mozRequestAnimationFrame ||
+ window.oRequestAnimationFrame ||
+ window.msRequestAnimationFrame ||
+ function(callback) {
+  window.setTimeout(callback, 1000 / 60);
+ }
+);
+  })();
+ })(this, document);
+</script>
+
+</body>
+</html>
+<script src="jq22-1.js"></script>
