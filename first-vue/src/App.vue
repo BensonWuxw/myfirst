@@ -8,14 +8,11 @@
     </a-layout-sider>
     <a-layout>
       <a-layout-header class="header">
-        <a-tag color="#2db7f5" @click="switchLan">{{currentLanguage === 'en' ? 'english' : '简体中文'}}</a-tag>
         <header-info></header-info>
+        <a-tag color="#2db7f5" @click="switchLan">{{currentLanguage === 'en' ? 'english' : '简体中文'}}</a-tag>
       </a-layout-header>
       <a-layout-content style="margin: 0 16px">
-        <a-breadcrumb style="margin: 16px 0">
-          <a-breadcrumb-item>User</a-breadcrumb-item>
-          <a-breadcrumb-item>Bill</a-breadcrumb-item>
-        </a-breadcrumb>
+        <breadCrumbVue />
         <router-view></router-view>
       </a-layout-content>
       <a-layout-footer style="text-align: center">
@@ -28,6 +25,7 @@
 <script setup lang="ts">
 import menuList from './components/menu.vue'
 import headerInfo from './components/headerInfo.vue'
+import breadCrumbVue from './components/breadCrumb.vue'
 import enUS from 'ant-design-vue/es/locale/en_US';
 import zhCN from 'ant-design-vue/es/locale/zh_CN';
 

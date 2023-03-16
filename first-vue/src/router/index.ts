@@ -14,14 +14,14 @@ const routes: Array<RouteRecordRaw> = [
     {
         name: 'testLan',
         path: '/testLan',
-        meta: {title: "测试语言切换", menu:false, menuItemName: 'ss'},
+        meta: {title: "测试语言切换", menu:false, menuItemName: '测试'},
         component: testLanguage,
         
     },
     {
         name: 'testTheme',
         path: '/testTheme',
-        meta: {title: "测试主题切换", menu:true},
+        meta: {title: "测试主题切换", menu:true, menuItemName: '测试'},
         component: testTheme
     }
 ]
