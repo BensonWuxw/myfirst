@@ -1,47 +1,55 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import { ConfigProvider, message } from 'ant-design-vue';
-import zhCN from "ant-design-vue"
-import dayjs from "dayjs"
-import 'dayjs/locale/zh-cn.js'
-import { nextTick, ref } from 'vue';
-const locale = ref(zhCN)
-dayjs.locale('zh-cn')
-const current = ref("")
-
-const switchTheme = () => {
-  let s1 = Math.floor(Math.random() * 10)
-  let s2 = Math.floor(Math.random() * 10)
-  let s3 = Math.floor(Math.random() * 10)
-  let s4 = Math.floor(Math.random() * 10)
-  let s5 = Math.floor(Math.random() * 10)
-  let s6 = Math.floor(Math.random() * 10)
-  nextTick(() => {
-    message.success("切换成功")
-    ConfigProvider.config({
-    theme: {
-      primaryColor: current.value,
-      successColor:  current.value,
-    },
-  })
-  
-});
-
-  
-  current.value = "#" + s1 + s2 + s3 + s4 + s5 + s6; 
-  console.log(current.value)
-}
-</script>
 
 <template>
   <a-config-provider :locale="locale">
-    <a-button type="primary" @click="switchTheme()">随机主题</a-button>
-    <a-alert message="Success Text" type="success" />
-  <a-alert message="Info Text" type="info" />
-  <a-alert message="Warning Text" type="warning" />
-  <a-alert message="Error Text" type="error" />
-    <HelloWorld msg="Vite + Vue" />
+    <a-layout style="min-height: 100vh">
+    <a-layout-sider v-model:collapsed="collapsed" collapsible>
+      <div class="logo" />
+      <menuList />
+    </a-layout-sider>
+    <a-layout>
+      <a-layout-header class="header">
+        <a-tag color="#2db7f5" @click="switchLan">{{currentLanguage === 'en' ? 'english' : '简体中文'}}</a-tag>
+        <header-info></header-info>
+      </a-layout-header>
+      <a-layout-content style="margin: 0 16px">
+        <a-breadcrumb style="margin: 16px 0">
+          <a-breadcrumb-item>User</a-breadcrumb-item>
+          <a-breadcrumb-item>Bill</a-breadcrumb-item>
+        </a-breadcrumb>
+        <router-view></router-view>
+      </a-layout-content>
+      <a-layout-footer style="text-align: center">
+        Ant Design ©2018 Created by Ant UED
+      </a-layout-footer>
+    </a-layout>
+  </a-layout>
   </a-config-provider>
 </template>
+<script setup lang="ts">
+import menuList from './components/menu.vue'
+import headerInfo from './components/headerInfo.vue'
+import enUS from 'ant-design-vue/es/locale/en_US';
+import zhCN from 'ant-design-vue/es/locale/zh_CN';
+
+import { nextTick, ref, provide } from 'vue';
+
+const locale = ref(zhCN)
+const currentLanguage = ref("zh")
+const collapsed = ref(false)
+const switchLan  = () => {
+  if (currentLanguage.value === 'en') {
+    currentLanguage.value = 'zh'
+    locale.value = zhCN
+  } else {
+    currentLanguage.value = 'en'
+    locale.value = enUS
+  }
+}
+
+
+</script>
+
+
+
 
 

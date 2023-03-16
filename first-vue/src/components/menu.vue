@@ -1,62 +1,44 @@
 <template>
-    <div style="width: 256px">
-      <a-button type="primary" style="margin-bottom: 16px" @click="toggleCollapsed">
-        <MenuUnfoldOutlined v-if="collapsed" />
-        <MenuFoldOutlined v-else />
-      </a-button>
-      <a-menu
-        v-model:openKeys="openKeys"
-        v-model:selectedKeys="selectedKeys"
-        mode="inline"
-        theme="dark"
-        :inline-collapsed="collapsed"
-      >
-        <a-menu-item key="1">
-          <template #icon>
-            <PieChartOutlined />
-          </template>
-          <span>Option 1</span>
-        </a-menu-item>
-        <a-menu-item key="2">
-          <template #icon>
-            <DesktopOutlined />
-          </template>
-          <span>Option 2</span>
-        </a-menu-item>
-        <a-menu-item key="3">
-          <template #icon>
-            <InboxOutlined />
-          </template>
-          <span>Option 3</span>
-        </a-menu-item>
-        <a-sub-menu key="sub1">
-          <template #icon>
-            <MailOutlined />
-          </template>
-          <template #title>Navigation One</template>
-          <a-menu-item key="5">Option 5</a-menu-item>
-          <a-menu-item key="6">Option 6</a-menu-item>
-          <a-menu-item key="7">Option 7</a-menu-item>
-          <a-menu-item key="8">Option 8</a-menu-item>
-        </a-sub-menu>
-        <a-sub-menu key="sub2">
-          <template #icon>
-            <AppstoreOutlined />
-          </template>
-          <template #title>Navigation Two</template>
-          <a-menu-item key="9">Option 9</a-menu-item>
-          <a-menu-item key="10">Option 10</a-menu-item>
-          <a-sub-menu key="sub3" title="Submenu">
-            <a-menu-item key="11">Option 11</a-menu-item>
-            <a-menu-item key="12">Option 12</a-menu-item>
-          </a-sub-menu>
-        </a-sub-menu>
-      </a-menu>
-    </div>
-  </template>
-  <script lang="ts">
-  import { defineComponent, reactive, toRefs, watch } from 'vue';
-  import {
+  <div style="width: 100%">
+    <a-menu v-model:selectedKeys="state.selectedKeys" theme="dark" mode="inline" @click="jumpPage">
+      
+      <a-sub-menu key="sub1">
+        <template #title>
+          <span>
+            <user-outlined />
+            <span>测试</span>
+          </span>
+        </template>
+        <a-menu-item key="testLan">
+        <pie-chart-outlined />
+        <span>测试语言切换</span>
+      </a-menu-item>
+      <a-menu-item key="testTheme">
+        <desktop-outlined />
+        <span>测试主题切换</span>
+      </a-menu-item>
+      </a-sub-menu>
+      <a-sub-menu key="sub2">
+        <template #title>
+          <span>
+            <team-outlined />
+            <span>Team</span>
+          </span>
+        </template>
+        <a-menu-item key="6">Team 1</a-menu-item>
+        <a-menu-item key="8">Team 2</a-menu-item>
+      </a-sub-menu>
+      <a-menu-item key="9">
+        <file-outlined />
+        <span>File</span>
+      </a-menu-item>
+    </a-menu>
+  </div>
+</template>
+<script lang="ts" setup>
+import { ref, reactive, watch } from 'vue';
+import { useRouter, useRoute} from 'vue-router';
+import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
     PieChartOutlined,
@@ -64,40 +46,34 @@
     DesktopOutlined,
     InboxOutlined,
     AppstoreOutlined,
+    UserOutlined,
+    TeamOutlined,
+    FileOutlined
   } from '@ant-design/icons-vue';
-  export default defineComponent({
-    components: {
-      MenuFoldOutlined,
-      MenuUnfoldOutlined,
-      PieChartOutlined,
-      MailOutlined,
-      DesktopOutlined,
-      InboxOutlined,
-      AppstoreOutlined,
-    },
-    setup() {
-      const state = reactive({
-        collapsed: false,
-        selectedKeys: ['1'],
-        openKeys: ['sub1'],
-        preOpenKeys: ['sub1'],
-      });
   
-      watch(
-        () => state.openKeys,
-        (_val, oldVal) => {
-          state.preOpenKeys = oldVal;
-        },
-      );
-      const toggleCollapsed = () => {
-        state.collapsed = !state.collapsed;
-        state.openKeys = state.collapsed ? [] : state.preOpenKeys;
-      };
+ const router = useRouter()
+ const route = useRoute()
+console.log(route.name)
+ const state = reactive({
+  collapsed: false,
+  selectedKeys: [route.name],
+  openKeys: ['sub1'],
+  preOpenKeys: ['sub1'],
+});
+
+watch(() => route.name, (newV,oldV)=> {
+  state.selectedKeys = [newV]
+})
   
-      return {
-        ...toRefs(state),
-        toggleCollapsed,
-      };
-    },
-  });
-  </script>
+
+  
+const toggleCollapsed = () => {
+  state.collapsed = !state.collapsed;
+  state.openKeys = state.collapsed ? [] : state.preOpenKeys;
+};
+
+const jumpPage = (item: any) => {
+  router.push({path: item.key})
+  state.selectedKeys = [item.key]
+}
+</script>
