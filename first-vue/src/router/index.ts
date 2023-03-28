@@ -3,7 +3,7 @@ import { defineStore } from "pinia"
 
 import testLanguage from "../components/test/testLanguage.vue"
 import testTheme from "../components/test/testTheme.vue"
-
+import logicflow from "../views/logicflow/logicflow.vue"
 const routes: Array<RouteRecordRaw> = [
     {
         name: '',
@@ -15,14 +15,19 @@ const routes: Array<RouteRecordRaw> = [
         name: 'testLan',
         path: '/testLan',
         meta: {title: "测试语言切换", menu:false, menuItemName: '测试'},
-        component: testLanguage,
-        
+        component: testLanguage 
     },
     {
         name: 'testTheme',
         path: '/testTheme',
         meta: {title: "测试主题切换", menu:true, menuItemName: '测试'},
         component: testTheme
+    },
+    {
+        name: 'logicflow',
+        path: '/logicflow',
+        meta: {title: "流程图", menu:true,},
+        component: logicflow
     }
 ]
 const router = createRouter({

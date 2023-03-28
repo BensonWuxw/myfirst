@@ -17,3 +17,14 @@ html, body, #app{
 .ant-layout-sider-trigger{
   background: inherit!important;
 }
+
+.ant-card{
+  height: 100%;
+}
+.ant-card .ant-card-head{
+  height: 40px;
+}
+
+.ant-card .ant-card-body{
+  height: calc(100% - 40px);
+}

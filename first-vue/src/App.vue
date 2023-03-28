@@ -8,16 +8,14 @@
     </a-layout-sider>
     <a-layout>
       <a-layout-header class="header">
-        <header-info></header-info>
+        
         <a-tag color="#2db7f5" @click="switchLan">{{currentLanguage === 'en' ? 'english' : '简体中文'}}</a-tag>
+        <header-info></header-info>
       </a-layout-header>
       <a-layout-content style="margin: 0 16px">
         <breadCrumbVue />
         <router-view></router-view>
       </a-layout-content>
-      <a-layout-footer style="text-align: center">
-        Ant Design ©2018 Created by Ant UED
-      </a-layout-footer>
     </a-layout>
   </a-layout>
   </a-config-provider>
