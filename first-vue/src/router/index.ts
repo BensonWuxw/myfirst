@@ -3,6 +3,8 @@ import { defineStore } from "pinia"
 
 import testLanguage from "../components/test/testLanguage.vue"
 import testTheme from "../components/test/testTheme.vue"
+import testShopping from "../components/test/testShopping.vue"
+
 import logicflow from "../views/logicflow/logicflow.vue"
 const routes: Array<RouteRecordRaw> = [
     {
@@ -22,6 +24,11 @@ const routes: Array<RouteRecordRaw> = [
         path: '/testTheme',
         meta: {title: "测试主题切换", menu:true, menuItemName: '测试'},
         component: testTheme
+    }, {
+        name: 'testShopping',
+        path: '/testShopping',
+        meta: {title: "测试购物功能", menu:true, menuItemName: '测试'},
+        component: testShopping
     },
     {
         name: 'logicflow',

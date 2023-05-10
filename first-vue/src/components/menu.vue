@@ -14,7 +14,11 @@
       </a-menu-item>
       <a-menu-item key="testTheme">
         <desktop-outlined />
-        <span>测试主题切换</span>
+        <span class="activeBG">测试主题切换</span>
+      </a-menu-item>
+      <a-menu-item key="testShopping">
+        <desktop-outlined />
+        <span>测试插件</span>
       </a-menu-item>
       </a-sub-menu>
       <a-menu-item key="logicflow">
