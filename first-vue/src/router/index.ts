@@ -6,6 +6,8 @@ import testTheme from "../components/test/testTheme.vue"
 import testShopping from "../components/test/testShopping.vue"
 
 import logicflow from "../views/logicflow/logicflow.vue"
+
+import testPage from "../views/testPage/testPage.vue"
 const routes: Array<RouteRecordRaw> = [
     {
         name: '',
@@ -35,6 +37,12 @@ const routes: Array<RouteRecordRaw> = [
         path: '/logicflow',
         meta: {title: "流程图", menu:true,},
         component: logicflow
+    },
+    {
+        name: 'testPage',
+        path: '/testPage',
+        meta: {title: "测试页面", menu:true,},
+        component: testPage
     }
 ]
 const router = createRouter({

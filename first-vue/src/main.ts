@@ -11,4 +11,5 @@ createApp(App)
 .use(Antd)
 .use(router)
 .use(pinia)
+
 .mount('#app')

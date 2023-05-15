@@ -37,9 +37,10 @@
 </span>
 </template>
 <script setup lang="ts">
+
   import { SettingOutlined } from '@ant-design/icons-vue';
   import { ref, nextTick } from 'vue';
-  import { ConfigProvider, message } from 'ant-design-vue';
+  import { ConfigProvider, message  } from 'ant-design-vue';
 import { useCommonParamsStore } from '../store';
   const commonParams = useCommonParamsStore()
   const modeStatus = ref(commonParams.mode === 'inline')
@@ -56,6 +57,7 @@ import { useCommonParamsStore } from '../store';
     nextTick(() => {
       // message.success("切换成功")
       ConfigProvider.config({
+        // prefixCls: 'dark',
       theme: {
         primaryColor: pureColor.value,
         successColor:  pureColor.value,
@@ -73,6 +75,7 @@ import { useCommonParamsStore } from '../store';
       commonParams.setTheme(themeStatus.value ? "dark" : "light")
     }
   }
+
 </script>
 
 

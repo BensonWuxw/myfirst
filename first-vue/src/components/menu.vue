@@ -14,7 +14,7 @@
       </a-menu-item>
       <a-menu-item key="testTheme">
         <desktop-outlined />
-        <span class="activeBG">测试主题切换</span>
+        <span class="activeBG">测试antd主题切换</span>
       </a-menu-item>
       <a-menu-item key="testShopping">
         <desktop-outlined />
@@ -24,6 +24,10 @@
       <a-menu-item key="logicflow">
         <desktop-outlined />
         <span>流程图</span>
+      </a-menu-item>
+      <a-menu-item key="testPage">
+        <file-outlined />
+        <span>自定义颜色主题切换</span>
       </a-menu-item>
       <a-sub-menu key="sub2">
         <template #title>
@@ -35,10 +39,7 @@
         <a-menu-item key="6">Team 1</a-menu-item>
         <a-menu-item key="8">Team 2</a-menu-item>
       </a-sub-menu>
-      <a-menu-item key="9">
-        <file-outlined />
-        <span>File</span>
-      </a-menu-item>
+    
     </a-menu>
   </div>
 </template>
