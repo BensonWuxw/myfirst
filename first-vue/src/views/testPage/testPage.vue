@@ -1,6 +1,6 @@
 <template>
   <div class="myclass">
-    二维热若
+    {{ $t('welcomeMsg') }}
     <a-select v-model:value="currentTheme" style="width:200px" @change="changeStyleS">
       <a-select-option label="themeA" value="themeA"></a-select-option>
       <a-select-option label="themeB" value="themeB"></a-select-option>
@@ -31,7 +31,7 @@ const changeStyleS = () => {
 .myclass{
   color: var(--ssColor);
   font-weight: bold;
-  font-size: 100px;
+  font-size: 30px;
 }
 </style>
 

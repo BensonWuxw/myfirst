@@ -1,6 +1,6 @@
 
 <template>
-  <a-config-provider :locale="locale">
+  <a-config-provider :locale="antLocale">
     <a-layout style="min-height: 100vh">
     <a-layout-sider v-model:collapsed="collapsed" collapsible>
       <div class="logo" />
@@ -29,16 +29,24 @@ import zhCN from 'ant-design-vue/es/locale/zh_CN';
 
 import { nextTick, ref, provide } from 'vue';
 
-const locale = ref(zhCN)
+/**
+ * 自定义国际化切换
+ */
+import { useI18n } from "vue-i18n"
+const {locale} = useI18n()
+
+const antLocale = ref(zhCN); // antd国际化切换
 const currentLanguage = ref("zh")
 const collapsed = ref(false)
 const switchLan  = () => {
   if (currentLanguage.value === 'en') {
     currentLanguage.value = 'zh'
-    locale.value = zhCN
+    antLocale.value = zhCN
+    locale.value = 'zh'
   } else {
     currentLanguage.value = 'en'
-    locale.value = enUS
+    antLocale.value = enUS;
+    locale.value = 'en'
   }
 }
 

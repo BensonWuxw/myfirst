@@ -8,6 +8,8 @@ import testShopping from "../components/test/testShopping.vue"
 import logicflow from "../views/logicflow/logicflow.vue"
 
 import testPage from "../views/testPage/testPage.vue"
+import testPageLess from "../views/testPage/testPageLess.vue"
+
 const routes: Array<RouteRecordRaw> = [
     {
         name: '',
@@ -43,6 +45,12 @@ const routes: Array<RouteRecordRaw> = [
         path: '/testPage',
         meta: {title: "测试页面", menu:true,},
         component: testPage
+    },
+    {
+        name: 'testPageLess',
+        path: '/testPageLess',
+        meta: {title: "测试页面", menu:true,},
+        component: testPageLess
     }
 ]
 const router = createRouter({

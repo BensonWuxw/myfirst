@@ -5,16 +5,16 @@
         <template #title>
           <span>
             <user-outlined />
-            <span>测试</span>
+            <span>{{$t('Test')}}</span>
           </span>
         </template>
         <a-menu-item key="testLan">
         <pie-chart-outlined />
-        <span>测试语言切换</span>
+        <span>{{$t('SwitchAntLang')}}</span>
       </a-menu-item>
       <a-menu-item key="testTheme">
         <desktop-outlined />
-        <span class="activeBG">测试antd主题切换</span>
+        <span class="activeBG">{{$t('SwitchAntTheme')}}</span>
       </a-menu-item>
       <a-menu-item key="testShopping">
         <desktop-outlined />
@@ -23,22 +23,22 @@
       </a-sub-menu>
       <a-menu-item key="logicflow">
         <desktop-outlined />
-        <span>流程图</span>
+        <span>{{$t('Flow')}}</span>
       </a-menu-item>
       <a-menu-item key="testPage">
         <file-outlined />
-        <span>自定义颜色主题切换</span>
+        <span>{{$t('CustomeSwitchAntTheme')}}</span>
       </a-menu-item>
-      <a-sub-menu key="sub2">
+      <!-- <a-sub-menu key="sub2">
         <template #title>
           <span>
             <team-outlined />
-            <span>Team</span>
+            <span>测试动态切换</span>
           </span>
         </template>
-        <a-menu-item key="6">Team 1</a-menu-item>
+        <a-menu-item key="testPageLess">less文件</a-menu-item>
         <a-menu-item key="8">Team 2</a-menu-item>
-      </a-sub-menu>
+      </a-sub-menu> -->
     
     </a-menu>
   </div>

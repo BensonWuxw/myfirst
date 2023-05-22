@@ -8,6 +8,7 @@ import LogicFlow from "@logicflow/core";
 import { DndPanel, SelectionSelect, Control, Menu } from "@logicflow/extension"
 import "@logicflow/core/dist/style/index.css";
 import "@logicflow/extension/lib/style/index.css"
+import customNode1 from "./customNode/node1.ts"
 import { onMounted ,ref} from "vue";
 let lf:any;
 const flowContainer = ref()
@@ -20,33 +21,41 @@ onMounted(() => {
         nodeTextEdit: false,
         edgeTextEdit: false
     });
-
+    lf.batchRegister([customNode1])
     lf.render({
-    nodes: [
-        {
-        id: "1",
-        type: "rect",
-        x: 100,
-        y: 100,
-        text: "节点1",
-        },
-        {
-        id: "2",
-        type: "circle",
-        x: 300,
-        y: 200,
-        text: "节点2",
-        },
-    ],
-    edges: [
-        {
-        sourceNodeId: "1",
-        targetNodeId: "2",
-        type: "polyline",
-        text: "连线",
-        },
-    ],
+        nodes: [
+            {
+            id: "1",
+            type: "rect",
+            x: 100,
+            y: 100,
+            text: "节点1",
+            },
+            {
+            id: "2",
+            type: "circle",
+            x: 300,
+            y: 200,
+            text: "节点2",
+            },
+            customNode1
+        ],
+        edges: [
+            {
+            sourceNodeId: "1",
+            targetNodeId: "2",
+            type: "polyline",
+            text: "连线",
+            },
+        ],
     });
+    lf.on("element:click", (data) => {
+        lf.setProperties(data.data.id, {
+            color: "red"
+        })
+        console.log(data)
+    })
+   
 })
   
 </script>

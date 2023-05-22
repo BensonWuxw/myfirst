@@ -4,7 +4,7 @@
 <span>
   <a-dropdown :trigger="['click']">
     <a class="ant-dropdown-link" @click.prevent>
-      <img src="/vite.svg">
+      <setting-outlined />
     </a>
     <template #overlay>
       <a-menu @click="clickUserInfo">
@@ -41,6 +41,7 @@
   import { SettingOutlined } from '@ant-design/icons-vue';
   import { ref, nextTick } from 'vue';
   import { ConfigProvider, message  } from 'ant-design-vue';
+
 import { useCommonParamsStore } from '../store';
   const commonParams = useCommonParamsStore()
   const modeStatus = ref(commonParams.mode === 'inline')
