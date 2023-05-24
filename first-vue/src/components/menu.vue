@@ -1,6 +1,6 @@
 <template>
   <div style="width: 100%">
-    <a-menu v-model:selectedKeys="state.selectedKeys" :mode="mode" :theme="theme" @click="jumpPage">
+    <a-menu v-model:selectedKeys="state.selectedKeys" :open-keys="state.openKeys" :mode="mode" :theme="theme" @click="jumpPage">
       <a-sub-menu key="sub1">
         <template #title>
           <span>
@@ -29,16 +29,36 @@
         <file-outlined />
         <span>{{$t('CustomeSwitchAntTheme')}}</span>
       </a-menu-item>
-      <!-- <a-sub-menu key="sub2">
+      <a-sub-menu key="sub2">
+        <template #title>
+          <span>
+            <user-outlined />
+            <span>{{$t('Test')}}</span>
+          </span>
+        </template>
+        <a-menu-item key="testLan">
+        <pie-chart-outlined />
+        <span>{{$t('SwitchAntLang')}}</span>
+      </a-menu-item>
+      <a-menu-item key="testTheme">
+        <desktop-outlined />
+        <span class="activeBG">{{$t('SwitchAntTheme')}}</span>
+      </a-menu-item>
+      <a-menu-item key="testShopping">
+        <desktop-outlined />
+        <span>测试插件</span>
+      </a-menu-item>
+      </a-sub-menu>
+      <a-sub-menu key="sub2">
         <template #title>
           <span>
             <team-outlined />
-            <span>测试动态切换</span>
+            <span>图表</span>
           </span>
         </template>
-        <a-menu-item key="testPageLess">less文件</a-menu-item>
+        <a-menu-item key="testPageLess">echarts组件</a-menu-item>
         <a-menu-item key="8">Team 2</a-menu-item>
-      </a-sub-menu> -->
+      </a-sub-menu>
     
     </a-menu>
   </div>
@@ -69,7 +89,7 @@ import {
   collapsed: false,
   selectedKeys: ["testLan"],
   rootSubmenuKeys: ["testLan", "testTheme"],
-  openKeys: ['sub1'],
+  openKeys: ['sub1', 'sub2'],
 });
 
 watch(() => route.name, (newV,oldV)=> {

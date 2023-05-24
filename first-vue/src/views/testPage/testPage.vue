@@ -11,11 +11,11 @@
 </template>
 <script lang="ts" setup>
 import "../../assets/less/style.less"
-import { changeStyle } from "../../utils/index"
+import { changeStyle, getFixedFromatterTime } from "../../utils/index"
 import { menusModel } from "../../utils/theme"
 import {ref} from "vue";
 const currentTheme = ref('themeA')
-console.log(menusModel)
+console.log(getFixedFromatterTime(1, '2023-05-23 11:16:11', -1))
 const changeStyleS = () => {
   let obj = menusModel[currentTheme.value]
 
