@@ -10,6 +10,8 @@ import logicflow from "../views/logicflow/logicflow.vue"
 import testPage from "../views/testPage/testPage.vue"
 import testPageLess from "../views/testPage/testPageLess.vue"
 
+import record from "../views/testPage/record.vue"
+
 const routes: Array<RouteRecordRaw> = [
     {
         name: '',
@@ -51,7 +53,14 @@ const routes: Array<RouteRecordRaw> = [
         path: '/testPageLess',
         meta: {title: "测试页面", menu:true,},
         component: testPageLess
-    }
+    },
+    {
+        name: 'record',
+        path: '/record',
+        meta: {title: "record", menu:true,},
+        component: record
+    },
+    
 ]
 const router = createRouter({
     history: createWebHashHistory(),

@@ -1,0 +1,73 @@
+[
+    {
+        "name": "line",
+        "type": "LineString",
+        "id": 66666666666666,
+        "coordinates": [
+            [
+                95.60800214576722,
+                35.9045788385582
+            ],
+            [
+                103.8345625,
+                30.2092660703373
+            ],
+            [
+                106.22518857288361,
+                34.92020142457009
+            ],
+            [
+                108.4751864271164,
+                24.232704911441807
+            ]
+        ]
+    },
+    {
+        "name": "point",
+        "type": "Point",
+        "id": 88888888888888,
+        "coordinates": [ 90.4751875, 36.783485088558194]
+    },
+    {
+        "name": "d",
+        "coordinates": [
+            [
+                [
+                    112.83456464576722,
+                    32.0373913385582
+                ],
+                [
+                    123.73300214576722,
+                    32.0373913385582
+                ],
+                [
+                    123.73300214576722,
+                    38.2952035703373
+                ],
+                [
+                    112.83456464576722,
+                    38.2952035703373
+                ],
+                [
+                    112.83456464576722,
+                    32.0373913385582
+                ]
+            ]
+        ],
+        "type": "Polygon",
+        "style": {
+            "text": "d",
+            "showText": true,
+            "fontSize": 14,
+            "color": "#B7CA0F",
+            "showImage": true,
+            "scale": 1,
+            "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAA6VJREFUWEe9l01oFVcUx/9nUqN17otUfTORogi6MPc9taDdCC2tFCxUXfix8KOChRbqFy4KbWOhcaEt3VlbW1qoC9sKoi78AAMSBRduDKjNu89F3FRKM/OMYGaebZI6p0xK5Plm7p15CXQ2szj/8z+/e+becxlCC0/olVcw8WuEaAuIiojYmXgz12CRH78Z1lliuiHcgbt5rCmPaHS4JMf/4W4QduTRxxoGzjFwrMNRN0w5mQCBL7cS43sQ5uYt3qhjxuGCq3p0uUaAieLAmakUzguhBRjxymvaKOplQBgAAoD7GbSSgJeMoISdoqh+adakAvi+FDa4l0FrUk0ZfRGizzrcezcn4+HQsuWw6COAdqXmECpP2+n1OXMqjxrjqQAjvuy2gCOpRhZ/LOZXv9KtNvDlPgKOp8Uj4FCHo44aAbgi2+sOboPR1WxiAQdmOyrVvFH7xJf7I+DrBAShavt4hUpqbDKW6EDglTYT8dmUFfQLR63OuyFDX94CsKpZz0xbCm7lnBag7ssjDHQnE/nHglv9IC9A4HX9QETvp2y6o7ajDmkBQr90CeB3EonMe223eiIvQN3r2sNE3yb1dFk4lfUGABmP0OUJALI22MWBS7kBauX1zNHFFP1vwlEr9ACefAjCvOQnME+0Zn3gyR4ifJ4AYAwLV803dWAEQCGFvFc46u28HQh9eQXAuhR9IBzVYQDougbQG2mFiNBjF9XhLAjt6icS+bpwqm+aTsFxBvbpinD0glvovOvr4o8fl+a2jfKwLk7AN7aj9usB9JunwZMPCqd6rLlIWJM7wPjZ1CFq2sypo7hekxeYsSGj1R5Ad5j5JhFeBSABLDYXx0W7qDY2ajQA2iOU9fmN8ebVx2LtdRz68icAu6dV8fnkk8JR7yXmi67A8B/lhe0zoj4Clk4XgoHBsXFr7byXBx7kBoiFT2qlbRHzr9MFsIi2zy5WTqce7Szzeq10gpk/zNJpjx3Rd3axssdwLM3WwZ9Li9TW3gegPAWIAX46trawYLA2ZYA4MfCWbSKynt3heUGYo80F995549HMaxYOyS9g4ZO8ekT4UnSqT7P0mf8FjQahJ0+BsDPLNJ6GwlXvZupMc0CXHPr6y+q/nOcvmyyIljowaRZ4cpAIS5rNmXG/4KqW5saUAOLCoSf/BmHmMwjGqHDVrKwVtzSITGZ8a9WM+qK/7gNYCOCB/fuLS2h1//j/BjDRBV92gnAVjLeEo4ZaLR7r/wUiLE8wdqHX6gAAAABJRU5ErkJggg==",
+            "lineWidth": 2,
+            "lineDash": "[0,0]",
+            "lineColor": "#15D411",
+            "fillType": "color",
+            "fillColor": "rgba(113, 90, 204, 0.68)"
+        }
+    }
+]

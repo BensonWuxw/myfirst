@@ -9,9 +9,13 @@
           </span>
         </template>
         <a-menu-item key="testLan">
-        <pie-chart-outlined />
-        <span>{{$t('SwitchAntLang')}}</span>
-      </a-menu-item>
+          <pie-chart-outlined />
+          <span>{{$t('SwitchAntLang')}}</span>
+        </a-menu-item>
+        <a-menu-item key="record">
+            <pie-chart-outlined />
+            <span>记录</span>
+          </a-menu-item>
       <a-menu-item key="testTheme">
         <desktop-outlined />
         <span class="activeBG">{{$t('SwitchAntTheme')}}</span>
