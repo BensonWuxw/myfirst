@@ -9,6 +9,9 @@ import logicflow from "../views/logicflow/logicflow.vue"
 
 import testPage from "../views/testPage/testPage.vue"
 import testPageLess from "../views/testPage/testPageLess.vue"
+import subject from "../views/testPage/subject.vue"
+
+
 
 import record from "../views/testPage/record.vue"
 
@@ -54,6 +57,13 @@ const routes: Array<RouteRecordRaw> = [
         meta: {title: "测试页面", menu:true,},
         component: testPageLess
     },
+    {
+        name: 'subject',
+        path: '/subject',
+        meta: {title: "样式", menu:true,},
+        component: subject
+    },
+    
     {
         name: 'record',
         path: '/record',
