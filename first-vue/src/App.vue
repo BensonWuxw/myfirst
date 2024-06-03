@@ -34,7 +34,7 @@ import { nextTick, ref, provide } from 'vue';
  */
 import { useI18n } from "vue-i18n"
 const {locale} = useI18n()
-
+provide("test", {test: 123})
 const antLocale = ref(zhCN); // antd国际化切换
 const currentLanguage = ref("zh")
 const collapsed = ref(false)

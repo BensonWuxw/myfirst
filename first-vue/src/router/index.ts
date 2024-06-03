@@ -10,10 +10,10 @@ import logicflow from "../views/logicflow/logicflow.vue"
 import testPage from "../views/testPage/testPage.vue"
 import testPageLess from "../views/testPage/testPageLess.vue"
 import subject from "../views/testPage/subject.vue"
-
-
-
 import record from "../views/testPage/record.vue"
+
+import studyPage from "../views/study/index.vue"
+import olMapPage from "../views/olMap/index.vue"
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -69,6 +69,18 @@ const routes: Array<RouteRecordRaw> = [
         path: '/record',
         meta: {title: "record", menu:true,},
         component: record
+    },
+    {
+        name: 'studyPage',
+        path: '/studyPage',
+        meta: {title: "studyPage", menu:true,},
+        component: studyPage
+    },
+    {
+        name: 'olMap',
+        path: '/olMap',
+        meta: {title: "olMap", menu:true,},
+        component: olMapPage
     },
     
 ]

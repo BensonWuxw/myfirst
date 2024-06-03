@@ -1,0 +1,282 @@
+[
+    {
+        "name": "test点",
+        "id": "1",
+        "data": {
+            
+            "coordinates": [
+                105.21883984374999,
+                36.8801653125
+            ],
+            "featureType": "Point"
+        }
+    },
+    {
+        "name": "test线",
+        "id": "2",
+        "data": {
+            "strokeConfig": {
+                "color": "#00ff1e",
+                "width": 2,
+                "lineDash": 1
+            },
+            "fillConfig": {
+                "color": "#000000",
+                "fillType": "color",
+                "src": "/src/assets/svgIcons/point.svg",
+                "imageSpacing": 50
+            },
+            "circleConfig": {
+                "fill": "#000000",
+                "radius": 8,
+                "scale": 1,
+                "strokeConfig": {
+                    "color": "#ff0000",
+                    "width": 1
+                }
+            },
+            "textConfig": {
+                "showText": false,
+                "fontSize": 10,
+                "fontFamily": "宋体",
+                "fontWeight": "bold",
+                "scale": 1,
+                "rotateWithView": true,
+                "rotation": 0,
+                "text": "",
+                "padding": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "fill": "#ffff00",
+                "placement": "line",
+                "strokeConfig": {
+                    "color": "#ff0000",
+                    "width": 1
+                }
+            },
+            "iconConfig": {
+                "showIcon": true,
+                "src": "/src/assets/svgIcons/point_map.svg",
+                "scale": 1,
+                "rotateWithView": true,
+                "rotation": 0
+            },
+            "coordinates": [
+                [
+                    99.94540234374999,
+                    37.803016875
+                ],
+                [
+                    99.94540234374999,
+                    32.881141875
+                ],
+                [
+                    102.18661328124999,
+                    36.396766875
+                ],
+                [
+                    103.76864453124999,
+                    31.562782499999997
+                ]
+            ],
+            "featureType": "LineString"
+        }
+    },
+    {
+        "name": "test面",
+        "id": "3",
+        "data": {
+            "strokeConfig": {
+                "color": "#ff0000",
+                "width": 2,
+                "lineDash": 1
+            },
+            "fillConfig": {
+                "color": "#4e24c2",
+                "fillType": "color",
+                "src": "/src/assets/svgIcons/point.svg",
+                "imageSpacing": 50
+            },
+            "circleConfig": {
+                "fill": "#000000",
+                "radius": 8,
+                "scale": 1,
+                "strokeConfig": {
+                    "color": "#ff0000",
+                    "width": 1
+                }
+            },
+            "textConfig": {
+                "showText": false,
+                "fontSize": 10,
+                "fontFamily": "宋体",
+                "fontWeight": "bold",
+                "scale": 1,
+                "rotateWithView": true,
+                "rotation": 0,
+                "text": "",
+                "padding": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "fill": "#ffff00",
+                "placement": "line",
+                "strokeConfig": {
+                    "color": "#ff0000",
+                    "width": 1
+                }
+            },
+            "iconConfig": {
+                "showIcon": true,
+                "src": "/src/assets/svgIcons/point_map.svg",
+                "scale": 1,
+                "rotateWithView": true,
+                "rotation": 0
+            },
+            "coordinates": [
+                [
+                    [
+                        110.66805859374999,
+                        36.4846575
+                    ],
+                    [
+                        112.64559765624999,
+                        38.6379778125
+                    ],
+                    [
+                        110.49227734374999,
+                        40.615516875
+                    ],
+                    [
+                        108.51473828124999,
+                        38.4621965625
+                    ],
+                    [
+                        110.66805859374999,
+                        36.4846575
+                    ]
+                ]
+            ],
+            "featureType": "Polygon"
+        }
+    },
+    {
+        "name": "test点1",
+        "id": "5",
+        "data": {
+            "strokeConfig": null,
+            "fillConfig": null,
+            "circleConfig": {
+                "fill": "#000000",
+                "radius": 8,
+                "scale": 1,
+                "strokeConfig": {
+                    "color": "#ff0000",
+                    "width": 1
+                }
+            },
+            "textConfig": {
+                "showText": false,
+                "fontSize": 10,
+                "fontFamily": "宋体",
+                "fontWeight": "bold",
+                "scale": 1,
+                "rotateWithView": true,
+                "rotation": 0,
+                "text": "",
+                "padding": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "fill": "#ffff00",
+                "placement": "point",
+                "strokeConfig": {
+                    "color": "#ff0000",
+                    "width": 1
+                }
+            },
+            "iconConfig": {
+                "showIcon": true,
+                "src": "/src/assets/svgIcons/position.svg",
+                "scale": 1,
+                "rotateWithView": true,
+                "rotation": 0
+            },
+            "coordinates": [
+                93.30966015624999,
+                34.507775538602374
+            ],
+            "featureType": "Point"
+        }
+    },
+    {
+        "name": "圆",
+        "id": "6",
+        "data": {
+            "strokeConfig": {
+                "color": "#df1111",
+                "width": 2,
+                "lineDash": 1
+            },
+            "fillConfig": {
+                "color": "#0fcc58",
+                "fillType": "color",
+                "src": "/src/assets/svgIcons/point.svg",
+                "imageSpacing": 50
+            },
+            "circleConfig": {
+                "fill": "#000000",
+                "radius": 8,
+                "scale": 1,
+                "strokeConfig": {
+                    "color": "#ff0000",
+                    "width": 1
+                }
+            },
+            "textConfig": {
+                "showText": false,
+                "fontSize": 10,
+                "fontFamily": "宋体",
+                "fontWeight": "bold",
+                "scale": 1,
+                "rotateWithView": true,
+                "rotation": 0,
+                "text": "",
+                "padding": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "fill": "#ffff00",
+                "placement": "line",
+                "strokeConfig": {
+                    "color": "#ff0000",
+                    "width": 1
+                }
+            },
+            "iconConfig": {
+                "showIcon": true,
+                "src": "/src/assets/svgIcons/point_map.svg",
+                "scale": 1,
+                "rotateWithView": true,
+                "rotation": 0
+            },
+            "coordinates": {
+                "center": [
+                    89.00301953124999,
+                    39.121751736344216
+                ],
+                "radius": 3.6812630011040994
+            },
+            "featureType": "Circle"
+        }
+    }
+]

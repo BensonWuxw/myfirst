@@ -42,7 +42,9 @@
           </span>
         </template>
         <a-menu-item key="testPageLess">echarts组件</a-menu-item>
-        <a-menu-item key="8">Team 2</a-menu-item>
+        <a-menu-item key="studyPage">学习</a-menu-item>
+        <a-menu-item key="olMap">地图操作</a-menu-item>
+
       </a-sub-menu>
     
     </a-menu>

@@ -6,17 +6,27 @@ export const useCommonParamsStore = defineStore('commonParams', {
         selectKeys: [],
         mode: 'inline',
         theme: "dark",
-        count: 0
+        count: 0,
+        olMap: null,
+        allUnderLayers: [],
+        allBusinessLayers: {}
     }
   },
   actions: {
     setMode(mode: string) {
-        console.log(mode)
         this.mode = mode
     },
     setTheme(theme: string) {
-        console.log(theme)
         this.theme = theme
-    }
+    },
+    setOlMap(olMap: any){
+      this.olMap = olMap
+    },
+    setAllUnderLayers(layers: any){
+      this.allUnderLayers = layers
+    },
+    setAllBusinessLayer(name: string, layer: any){
+      this.allBusinessLayers[name] = layer
+    },
   },
 })
