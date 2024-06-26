@@ -1,10 +1,10 @@
 <template>
-    <div>123123</div>
+    <div></div>
 </template>
 <script setup>
 import { reactive, ref, nextTick } from "vue"
 import { useCommonParamsStore } from "@/store/index"
-import { businessLayer } from "./businessModuleConfig"
+import { businessLayer, popup,  popup2} from "./businessModuleConfig"
 import { getFeaturesList } from "@/api/map.js"
 import { createFeatureCollection, createFeature } from "@/olMapUtils/handleLayerAndFeature.js"
 
@@ -19,6 +19,8 @@ nextTick(() => {
     businessModuleSource.value = businessModuleLayer.value.getSource();
     window.olMap.addLayer(businessModuleLayer.value)
     commonParams.setAllBusinessLayer('businessModuleLayer', businessLayer)
+    window.olMap.addOverlay(popup)
+    window.olMap.addOverlay(popup2)
     getFeaturesList().then(res => {
         if (res) {
             let circleFeatures = []
@@ -30,11 +32,21 @@ nextTick(() => {
                 } else {
                     circleFeatures.push(createFeature(item))
                 }
- 
             })
             businessModuleSource.value.addFeatures(circleFeatures)
             businessModuleSource.value.addFeatures(createFeatureCollection(geoJsonData))
         }
+    })
+    window.olMap.on("singleclick", (evt) => {
+        let feature = window.olMap.forEachFeatureAtPixel(evt.pixel, function (feature) 
+        {console.log(evt.pixel)
+            return feature;
+        });
+       if (feature) {
+        let coordinate = feature.getGeometry().getFirstCoordinate();
+        let htmlContent = `<div>12312313</div>`
+        popup.show(coordinate, htmlContent)
+       }
     })
 })
 

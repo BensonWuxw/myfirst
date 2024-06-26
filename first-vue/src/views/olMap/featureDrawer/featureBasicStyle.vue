@@ -139,7 +139,7 @@ const initializeStyleConfig = (feature, handleType) => {
       featureStyleFormState.fillConfig = null;
     }
   }
-  console.log(handleType)
+
 }
 
 const modifyIconSrc = (src, configType) => {

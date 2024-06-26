@@ -1,5 +1,5 @@
 import {createRouter, createWebHashHistory, RouteRecordRaw} from "vue-router"
-import { defineStore } from "pinia"
+
 
 import testLanguage from "../components/test/testLanguage.vue"
 import testTheme from "../components/test/testTheme.vue"
@@ -14,6 +14,7 @@ import record from "../views/testPage/record.vue"
 
 import studyPage from "../views/study/index.vue"
 import olMapPage from "../views/olMap/index.vue"
+import training from "@/views/training/index.vue"
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -81,6 +82,12 @@ const routes: Array<RouteRecordRaw> = [
         path: '/olMap',
         meta: {title: "olMap", menu:true,},
         component: olMapPage
+    },
+    {
+        name: 'training',
+        path: '/training',
+        meta: {title: "training", menu:true,},
+        component: training
     },
     
 ]

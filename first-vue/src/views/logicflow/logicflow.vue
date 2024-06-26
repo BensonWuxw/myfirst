@@ -1,5 +1,5 @@
 <template>
-    <a-card title="流程图">
+    <a-card class="flow" title="流程图">
         <div id="flow-container" ref="flowContainer"></div>
     </a-card>
 </template>
@@ -8,7 +8,7 @@ import LogicFlow from "@logicflow/core";
 import { DndPanel, SelectionSelect, Control, Menu } from "@logicflow/extension"
 import "@logicflow/core/dist/style/index.css";
 import "@logicflow/extension/lib/style/index.css"
-import customNode1 from "./customNode/node1.ts"
+import customNode1 from "./customNode/node2.ts"
 import { onMounted ,ref} from "vue";
 let lf:any;
 const flowContainer = ref()
@@ -59,7 +59,13 @@ onMounted(() => {
 })
   
 </script>
-<style>
+<style lang="less" scoped>
+.flow{
+    height: 100%;
+    ::v-deep .ant-card-body{
+        height: calc(100% - 48px); 
+    }
+}
 #flow-container {
     width: 100%;
     height: 100%;
