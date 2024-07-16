@@ -9,7 +9,7 @@ import logicflow from "../views/logicflow/logicflow.vue"
 
 import testPage from "../views/testPage/testPage.vue"
 import testPageLess from "../views/testPage/testPageLess.vue"
-import subject from "../views/testPage/subject.vue"
+import pluginLibrary from "../views/testPage/pluginLibrary.vue"
 import record from "../views/testPage/record.vue"
 
 import studyPage from "../views/study/index.vue"
@@ -55,14 +55,14 @@ const routes: Array<RouteRecordRaw> = [
     {
         name: 'testPageLess',
         path: '/testPageLess',
-        meta: {title: "测试页面", menu:true,},
+        meta: {title: "测试插件", menu:true,},
         component: testPageLess
     },
     {
-        name: 'subject',
-        path: '/subject',
+        name: 'pluginLibrary',
+        path: '/pluginLibrary',
         meta: {title: "样式", menu:true,},
-        component: subject
+        component: pluginLibrary
     },
     
     {

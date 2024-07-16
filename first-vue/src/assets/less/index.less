@@ -6,9 +6,27 @@
     outline: 0;
     list-style: none;
 }
+@font-face {
+    font-family: 'LCdd';
+    src: url('@/assets/fonts/LCdd.TTF');
+}
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #2e89cd;
+    border-radius: 3px;
+}
+::-webkit-scrollbar-track {
+    background-color: #15274c;
+}
 .ant-layout-content{
     margin: 0!important;
     padding: 20px;
+    height: calc(100vh - 64px);
+    overflow-x: hidden;
+    overflow-y: auto;
     &:has(.ol-map-container){
         padding: 0;
     }

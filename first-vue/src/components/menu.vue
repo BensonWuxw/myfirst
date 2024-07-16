@@ -10,9 +10,9 @@
         <file-outlined />
         <span>{{$t('CustomeSwitchAntTheme')}}</span>
       </a-menu-item>
-      <a-menu-item key="subject">
+      <a-menu-item key="pluginLibrary">
         <file-outlined />
-        <span>科目</span>
+        <span>VUE3插件</span>
       </a-menu-item>
       <a-sub-menu key="sub2">
         <template #title>
