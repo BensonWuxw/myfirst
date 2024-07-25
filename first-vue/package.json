@@ -16,6 +16,7 @@
     "copy-text-to-clipboard": "^3.2.0",
     "dayjs": "^1.11.7",
     "echarts": "^5.4.2",
+    "echarts-liquidfill": "^3.1.0",
     "g": "^2.0.1",
     "npm": "^9.7.2",
     "ol": "^9.2.3",
@@ -29,7 +30,8 @@
     "vue-router": "^4.1.6",
     "vue-word-highlighter": "^1.2.4",
     "vue3-seamless-scroll": "^2.0.1",
-    "vuedraggable": "^4.1.0"
+    "vuedraggable": "^4.1.0",
+    "vue-baidu-map-3x": "^1.0.37"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",

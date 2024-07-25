@@ -1,11 +1,10 @@
 <template>
   <div class="myclass">
     <echartsVue ref="echartsItem" :options="options"></echartsVue>
-    <echartsVue ref="echartsItem1" :options="options"></echartsVue>
   </div>
 </template>
 <script lang="ts" setup>
-import echartsVue from "../../components/echarts.vue"
+import echartsVue from "../../components/echartsItem.vue"
 import {ref} from "vue";
 import { message } from "ant-design-vue";
 const echartsItem = ref()

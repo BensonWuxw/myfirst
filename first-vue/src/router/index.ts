@@ -16,12 +16,20 @@ import studyPage from "../views/study/index.vue"
 import olMapPage from "../views/olMap/index.vue"
 import training from "@/views/training/index.vue"
 
+import dashborad1 from "@/views/dashboard/page1/index.vue"
+import dashborad2 from "@/views/dashboard/page2/index.vue"
+
+import dashborad3 from "@/views/dashboard/page3/index.vue"
+import dashborad4 from "@/views/dashboard/page4/index.vue"
+import dashborad5 from "@/views/dashboard/page5/index.vue"
+import dashborad6 from "@/views/dashboard/page6/index.vue"
+
 const routes: Array<RouteRecordRaw> = [
     {
         name: '',
         path: '/',
         meta: {title: "首页", menu:true},
-        component: testLanguage
+        component: dashborad5
     },
     {
         name: 'testLan',
@@ -89,6 +97,43 @@ const routes: Array<RouteRecordRaw> = [
         meta: {title: "training", menu:true,},
         component: training
     },
+    {
+        name: 'dashborad1',
+        path: '/dashborad1',
+        meta: {title: "dashborad1", menu:true,},
+        component: dashborad1
+    },
+    {
+        name: 'dashborad2',
+        path: '/dashborad2',
+        meta: {title: "dashborad2", menu:true,},
+        component: dashborad2
+    },
+    {
+        name: 'dashborad3',
+        path: '/dashborad3',
+        meta: {title: "dashborad3", menu:true,},
+        component: dashborad3
+    },
+    {
+        name: 'dashborad4',
+        path: '/dashborad4',
+        meta: {title: "dashborad4", menu:true,},
+        component: dashborad4
+    },
+    {
+        name: 'dashborad5',
+        path: '/dashborad5',
+        meta: {title: "dashborad5", menu:true,},
+        component: dashborad5
+    },
+    {
+        name: 'dashborad6',
+        path: '/dashborad6',
+        meta: {title: "dashborad6", menu:true,},
+        component: dashborad6
+    },
+    
     
 ]
 const router = createRouter({
