@@ -23,6 +23,8 @@ import dashborad3 from "@/views/dashboard/page3/index.vue"
 import dashborad4 from "@/views/dashboard/page4/index.vue"
 import dashborad5 from "@/views/dashboard/page5/index.vue"
 import dashborad6 from "@/views/dashboard/page6/index.vue"
+import page404 from "@/views/404/index.vue"
+import loading from "@/views/loading/index.vue"
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -132,6 +134,18 @@ const routes: Array<RouteRecordRaw> = [
         path: '/dashborad6',
         meta: {title: "dashborad6", menu:true,},
         component: dashborad6
+    },
+    {
+        name: 'page404',
+        path: '/page404',
+        meta: {title: "404", menu:true,},
+        component: page404
+    },
+    {
+        name: 'loading',
+        path: '/loading',
+        meta: {title: "loading", menu:true,},
+        component: loading
     },
     
     

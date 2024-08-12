@@ -2,13 +2,14 @@ import pointIcon from '@/assets/svgIcons/point_map.svg'
 import point1Icon from '@/assets/svgIcons/position.svg'
 import safeIcon from '@/assets/svgIcons/safe.svg'
 import point2Icon from '@/assets/svgIcons/point.svg'
-
+import gifFs from '@/assets/images/wind_shape.gif'
 // icon选择列表配置
 export const incoListArray = [
     pointIcon,
     point1Icon,
     safeIcon,
     point2Icon,
+    gifFs
 ]
 
 // 标注文字可选字体类型配置

@@ -20,7 +20,7 @@
         <span>VUE3插件</span>
       </a-menu-item>
       <a-menu-item key="olMap">
-        <svg-icon icon-name="map" style="margin-right: 0.1rem;"></svg-icon> 地图操作</a-menu-item>
+        <svg-icon icon-name="map" style="margin-right: 0.1rem;"></svg-icon> openlayers 地图操作</a-menu-item>
 
       <a-menu-item key="logicflow">
         <desktop-outlined />
@@ -50,6 +50,15 @@
         <desktop-outlined />
         <span>测试插件</span>
       </a-menu-item>
+      <a-menu-item key="page404">
+        <desktop-outlined />
+        <span>404</span>
+      </a-menu-item>
+      <a-menu-item key="loading">
+        <desktop-outlined />
+        <span>loading</span>
+      </a-menu-item>
+      
       </a-sub-menu>
       <a-sub-menu key="sub3">
         <template #title>

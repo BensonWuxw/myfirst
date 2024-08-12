@@ -103,7 +103,7 @@ const onMove = (e, originalEvent) => {
   flex-direction: column;
   padding-left: 0;
   margin-bottom: 0;
-  border-radius: 0.25rem;
+  border-radius: 0;
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
@@ -114,7 +114,7 @@ const onMove = (e, originalEvent) => {
 .list-group-item {
   position: relative;
   display: block;
-  padding: 0.75rem 1.25rem;
+  padding: 10px 15px;
   background-color: #fff;
   cursor: move;
   border: 1px solid rgba(0, 0, 0, 0.125);

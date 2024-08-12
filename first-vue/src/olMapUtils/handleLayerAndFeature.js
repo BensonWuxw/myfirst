@@ -6,7 +6,7 @@ import Feature from 'ol/Feature.js';
 import GeoJSON from 'ol/format/GeoJSON.js';
 import {Polygon, Point, Circle, LineString} from 'ol/geom.js';
 import mapConfig from "./layerConfig.js"
-import { createLayerOrFeatureStyle } from "./settingStyle"
+import { createLayerOrFeatureStyle, createGifImg } from "./settingStyle"
 
 /**
  * 创建底图图层
@@ -114,10 +114,11 @@ export const iconTextZoom = (layer, scale) => {
 }
 
 // 创建要素
-export const createFeature = (data) => {
+export const createFeature = (data, type) => {
     let geometryData = null;
+    console.error(data)
+
     if (!data) return null;
-    console.log(data)
     if (['circle', 'Circle'].includes(data.type)) {
         if (data.coordinates.center instanceof Array && data.coordinates.radius) {
             geometryData = new Circle(data.coordinates.center, data.coordinates.radius)
@@ -131,15 +132,19 @@ export const createFeature = (data) => {
             let coordinatesData = {
                 coordinates: data.coordinates
             }
-            console.log(coordinatesData)
-            let geometry = {
-                'point': new Point(data.coordinates),
-                'polygon': new Polygon(coordinatesData),
-                'lineString': new LineString(coordinatesData),
+            let geometry = null
+            switch(data.data.featureType) {
+                case 'Point':
+                    geometry = new Point(data.coordinates) 
+                    break;
+                case "Polygon":
+                    geometry = new Polygon(coordinatesData) 
+                    break;
+                case "LineString":
+                    geometry = new LineString(coordinatesData) 
+                    break;
             }
-            console.log(geometryData)
-            geometryData = geometry[data.featureType]
-            
+            geometryData = geometry
         } else {
             console.error('coordinates不是标准数据')
             return null
@@ -149,7 +154,11 @@ export const createFeature = (data) => {
     let feature = new Feature({ geometry: geometryData });
     feature.set('name', data.name)
     feature.set('id', data.id)
-    feature.setStyle(createLayerOrFeatureStyle(data.data))
+    if (type === 'gif') {
+        createGifImg(data.data.iconConfig, feature)
+    } else {
+        feature.setStyle(createLayerOrFeatureStyle(data.data, feature))
+    }
     return feature
     
 }

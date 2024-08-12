@@ -28,6 +28,10 @@ nextTick(() => {
                 item.type = item.data.featureType.charAt(0).toUpperCase() + item.data.featureType.substring(1, item.data.featureType.length);
                 item.coordinates = item.data.coordinates;
                 if (item.type !== 'Circle') {
+                    if (item?.data?.iconConfig?.src?.indexOf('.gif') > -1) {
+                        let dd = createFeature(item, "gif")
+                        businessModuleSource.value.addFeature(dd)
+                    }
                     return item
                 } else {
                     circleFeatures.push(createFeature(item))

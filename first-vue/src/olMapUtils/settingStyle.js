@@ -185,6 +185,31 @@ const setText = (params) => {
 }
 
 /**
+ * gif动图样式
+ * url gif图片地址
+ * */ 
+export const createGifImg = async (data, feature) => {
+    const gif = gifler(data.src);
+    gif.frames(
+        document.createElement('canvas'),
+        function (ctx, frame) {
+            feature.setStyle(
+                new Style({
+                    image: new Icon({
+                    img: ctx.canvas,
+                    scale: data.scale,
+                    opacity: data.opacity,
+                }),
+            }),
+        );
+          ctx.clearRect(0, 0, frame.width * data.scale[0], frame.height * data.scale[1]);
+          ctx.drawImage(frame.buffer, frame.x, frame.y);
+        },
+        true,
+    );
+}
+
+/**
  * 设置icon属性
  * @params anchor：设置图标的锚点，默认为图形的中心点，[0.5, 0.5]
  * @params anchorOrigin：描点偏移的位置，包括bottom-left, bottom-right, top-left , top-right。
@@ -209,6 +234,7 @@ const setIcon = (params) => {
     let iconConfig = params || featureDefaultStyle.iconConfig;
     if (iconConfig.showIcon) {
         let rotation = iconConfig.rotateWithView && iconConfig.rotation && iconConfig.rotation > 0 ? degreesToRadians(iconConfig.rotation) : 0
+    
         return new Icon({
             anchor: iconConfig.anchor || [0.5, 0.5],
             anchorOrigin: iconConfig.anchorOrigin || 'top-left',
@@ -233,13 +259,18 @@ const setIcon = (params) => {
 /**
  * 生成要素或图层通用样式
  * */
-export const createLayerOrFeatureStyle = (styleConfig) => {
+export const createLayerOrFeatureStyle = (styleConfig, feature) => {
     let imageStyle = styleConfig.iconConfig ? setIcon(styleConfig.iconConfig) : setCircleStyle(styleConfig.circleConfig)
     if (styleConfig.iconConfig && styleConfig.iconConfig.showIcon === false && styleConfig.textConfig && styleConfig.textConfig.showText === false) {
         imageStyle = setCircleStyle(styleConfig.circleConfig)
     }
     let config = { image: imageStyle };
-    styleConfig.fillConfig ? config.fill = setFill(styleConfig.fillConfig.color) : ''
+    
+    if (styleConfig?.fillConfig?.src) {
+        settingFillImage(styleConfig, feature)
+    } else {
+        styleConfig.fillConfig ? config.fill = setFill(styleConfig.fillConfig.color) : '' 
+    }
     styleConfig.strokeConfig ? config.stroke = setStroke(styleConfig.strokeConfig) : ''
     styleConfig.textConfig ? config.text = setText(styleConfig.textConfig) : ''
     return new Style(config)
@@ -250,9 +281,9 @@ export const settingFillImage = (styleParams, feature) => {
     let cnv = document.createElement('canvas');
     let ctx = cnv.getContext('2d');
     let img = new Image();
-    let spacing = styleParams.fillConfig.imageSpacing || 50;
+    let spacing = styleParams?.fillConfig?.imageSpacing || 50;
     img.crossOrigin = 'anonymous';
-    img.src = styleParams.fillConfig.src;
+    img.src = styleParams?.fillConfig?.src;
     img.onload = function () {
         // 创建一个新的 Canvas 用于绘制带有透明间隔的图案
         let patternCanvas = document.createElement('canvas');

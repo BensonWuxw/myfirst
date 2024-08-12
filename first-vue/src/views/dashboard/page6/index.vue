@@ -219,7 +219,7 @@
     </div>
 </template>
 <script setup>
-import { ref, onMounted, reactive } from "vue";
+import { ref, onMounted, reactive, onUnmounted } from "vue";
 import CountUp from "vue-countup-v3";
 import gauge from "./components/gauge.vue";
 import kLine from "./components/kLine.vue";
@@ -292,7 +292,7 @@ onMounted(() => {
     kLineBox1.value.refreshCharts()
 })
 const Timer = ref(0)
-setInterval(()=> {
+const timers = setInterval(()=> {
     relativePressure.value = Math.ceil(Math.random() * 100)
     absolutePressure.value = Math.ceil(Math.random() * 100)
     pressureStatus.value = (relativePressure.value + absolutePressure.value) % 2 === 0 ? 'relative' : 'absolute';
@@ -319,6 +319,9 @@ setInterval(()=> {
     }
     Timer.value++;
 }, 3000)
+onUnmounted(() => {
+  clearTimeout(timers);
+});
 </script>
 <style lang="less" scoped>
 @GreenColor: #B0CC35;

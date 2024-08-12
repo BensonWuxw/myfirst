@@ -8,6 +8,13 @@
                 105.21883984374999,
                 36.8801653125
             ],
+            "iconConfig": {
+                "showIcon": true,
+                "src": "/src/assets/images/wind_shape.gif",
+                "scale": 0.1,
+                "rotateWithView": true,
+                "rotation": 0
+            },
             "featureType": "Point"
         }
     },
@@ -23,7 +30,7 @@
             "fillConfig": {
                 "color": "#000000",
                 "fillType": "color",
-                "src": "/src/assets/svgIcons/point.svg",
+                "src": "/src/assets/images/wind_shape.gif",
                 "imageSpacing": 50
             },
             "circleConfig": {
@@ -60,9 +67,10 @@
             "iconConfig": {
                 "showIcon": true,
                 "src": "/src/assets/svgIcons/point_map.svg",
-                "scale": 1,
+                "scale": [0.1,0.1],
                 "rotateWithView": true,
-                "rotation": 0
+                "rotation": 0,
+                "opacity": 0.8
             },
             "coordinates": [
                 [
@@ -97,7 +105,7 @@
             "fillConfig": {
                 "color": "#4e24c2",
                 "fillType": "color",
-                "src": "/src/assets/svgIcons/point.svg",
+                "src": "/src/assets/svgIcons/point_map.svg",
                 "imageSpacing": 50
             },
             "circleConfig": {
