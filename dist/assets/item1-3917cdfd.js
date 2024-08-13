@@ -1,1 +1,0 @@
-import{r as m,o as e,c as n,F as i,a as l,t as _}from"./index-b65f443a.js";const u={class:"menu"},v={__name:"item1",setup(c){const a=m([{name:"菜单1"},{name:"菜单2"},{name:"菜单3"}]);return(t,s)=>(e(),n("div",u,[(e(!0),n(i,null,l(a.value,(r,o)=>(e(),n("div",{key:o,class:"menu-item",onClick:s[0]||(s[0]=p=>t.linkTo(t.xxx))},_(r.name),1))),128))]))}};export{v as default};
