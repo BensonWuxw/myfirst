@@ -25,7 +25,7 @@ import dashborad5 from "@/views/dashboard/page5/index.vue"
 import dashborad6 from "@/views/dashboard/page6/index.vue"
 import page404 from "@/views/404/index.vue"
 import loading from "@/views/loading/index.vue"
-
+import palnMode from "../views/testPage/testModel.vue"
 const routes: Array<RouteRecordRaw> = [
     {
         name: '',
@@ -147,6 +147,13 @@ const routes: Array<RouteRecordRaw> = [
         meta: {title: "loading", menu:true,},
         component: loading
     },
+    {
+        name: 'palnMode',
+        path: '/palnMode',
+        meta: {title: "palnMode", menu:true,},
+        component: palnMode
+    },
+    
     
     
 ]

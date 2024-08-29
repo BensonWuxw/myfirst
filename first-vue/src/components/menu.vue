@@ -30,6 +30,10 @@
         <file-outlined />
         <span>{{$t('CustomeSwitchAntTheme')}}</span>
       </a-menu-item>
+      <a-menu-item key="palnMode">
+        <file-outlined />
+        <span>设计模型</span>
+      </a-menu-item>
       
       <a-sub-menu key="sub2">
         <template #title>

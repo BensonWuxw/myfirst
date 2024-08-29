@@ -3,7 +3,6 @@
     <a href="https://css-loaders.com/classic/" target="_blank">css  loading动画合集</a>
   <ul>
     <li class="progress"></li>
-
     <li class="circle-cut">优惠券</li>
     <li class="box">https://css-loaders.com/classic/</li>
     <li class="polygon "></li>

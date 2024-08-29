@@ -1,5 +1,6 @@
 <template>
-  <a-row :gutter="16">
+  <div>
+    <a-row :gutter="16">
     <a-col :span="8">
       <a-card class="box-shadow1" title="数字翻牌器 --> vue-countup-v3" :bordered="false">
         <a-typography-title><count-up :end-val="num" :duration="2"></count-up></a-typography-title>
@@ -71,6 +72,7 @@
       </a-card>
     </a-col>
   </a-row>
+  </div>
 </template>
 <script lang="ts" setup>
 import { message } from "ant-design-vue";
