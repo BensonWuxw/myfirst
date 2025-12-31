@@ -30,11 +30,17 @@
         <file-outlined />
         <span>{{$t('CustomeSwitchAntTheme')}}</span>
       </a-menu-item>
-      <a-menu-item key="palnMode">
-        <file-outlined />
-        <span>设计模型</span>
-      </a-menu-item>
-      
+      <a-sub-menu key="palnMode">
+        <template #title>
+          <span>
+            <file-outlined />         
+            <span>功能组件</span>
+          </span>
+        </template>
+        <a-menu-item key="palnMode1">仿甘特图</a-menu-item>
+        <a-menu-item key="palnMode2">3D轮播</a-menu-item>
+        <a-menu-item key="palnMode3">3D旋转</a-menu-item>
+      </a-sub-menu>
       <a-sub-menu key="sub2">
         <template #title>
           <span>

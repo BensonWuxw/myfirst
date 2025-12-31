@@ -2,10 +2,6 @@
   <div class="dashboard-container">
     <!-- 主内容区 -->
     <main class="dashboard-content">
-      <!-- 数字服务卡片网格 -->
-      <div class="homepage-title">
-        <div>油服完井工程生产管理系统</div>
-      </div>
       <div class="three-dimensional-carousel">
         <div class="carousel-container" ref="carouselContainer">
           <div v-for="(item, index) in images" :key="item.id" class="carousel-item" 

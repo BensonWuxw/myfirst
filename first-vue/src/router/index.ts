@@ -26,6 +26,10 @@ import dashborad6 from "@/views/dashboard/page6/index.vue"
 import page404 from "@/views/404/index.vue"
 import loading from "@/views/loading/index.vue"
 import palnMode from "../views/testPage/testModel.vue"
+import palnMode1 from "../views/projectProgress/index.vue"
+import palnMode2 from "../views/3dCarousel/index.vue"
+import palnMode3 from "../views/study/item1.vue"
+
 const routes: Array<RouteRecordRaw> = [
     {
         name: '',
@@ -135,6 +139,26 @@ const routes: Array<RouteRecordRaw> = [
         meta: {title: "dashborad6", menu:true,},
         component: dashborad6
     },
+    {
+        name: 'palnMode1',
+        path: '/palnMode1',
+        meta: {title: "工程进度", menu:true,},
+        component: palnMode1
+    },
+    {
+        name: 'palnMode2',
+        path: '/palnMode2',
+        meta: {title: "3d轮播图", menu:true,},
+        component: palnMode2
+    },
+    {
+        name: 'palnMode3',
+        path: '/palnMode3',
+        meta: {title: "3D旋转", menu:true,},
+        component: palnMode3
+    },
+    
+    
     {
         name: 'page404',
         path: '/page404',

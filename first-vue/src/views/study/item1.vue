@@ -10,7 +10,9 @@ import { ref } from 'vue';
 const MENU_LIST = ref([
   { name: '菜单1'},
   { name: '菜单2'},
-  { name: '菜单3'}
+  { name: '菜单3'},
+  { name: '菜单4'},
+  { name: '菜单5'}
 ])
     </script>  
     <style lang="less">
@@ -40,13 +42,25 @@ const MENU_LIST = ref([
     &:nth-child(2) {
       animation: animateX 10s cubic-bezier(0.36, 0, 0.64, 1) -11.667s infinite alternate,
         animateY 10s cubic-bezier(0.36, 0, 0.64, 1) -6.667s infinite alternate,
-        scaleAnimate 20s cubic-bezier(0.36, 0, 0.64, 1) -6.667s infinite alternate;
+        scaleAnimate 20s cubic-bezier(0.36, 0, 0.64, 1) -4s infinite alternate;
     }
 
     &:nth-child(3) {
       animation: animateX 10s cubic-bezier(0.36, 0, 0.64, 1) -18.334s infinite alternate,
         animateY 10s cubic-bezier(0.36, 0, 0.64, 1) -13.334s infinite alternate,
-        scaleAnimate 20s cubic-bezier(0.36, 0, 0.64, 1) -13.334s infinite alternate;
+        scaleAnimate 20s cubic-bezier(0.36, 0, 0.64, 1) -8s infinite alternate;
+    }
+
+    &:nth-child(4) {
+      animation: animateX 10s cubic-bezier(0.36, 0, 0.64, 1) -18.334s infinite alternate,
+        animateY 10s cubic-bezier(0.36, 0, 0.64, 1) -13.334s infinite alternate,
+        scaleAnimate 20s cubic-bezier(0.36, 0, 0.64, 1) -12s infinite alternate;
+    }
+
+    &:nth-child(5) {
+      animation: animateX 10s cubic-bezier(0.36, 0, 0.64, 1) -18.334s infinite alternate,
+        animateY 10s cubic-bezier(0.36, 0, 0.64, 1) -13.334s infinite alternate,
+        scaleAnimate 20s cubic-bezier(0.36, 0, 0.64, 1) -16s infinite alternate;
     }
   }
 }

@@ -1,8 +1,8 @@
 <template>
     <AsyncComp></AsyncComp>
     <a-button type="primary" @click="fangdou(clickBtn, 2000)">测试防抖</a-button>
-    <treeVue></treeVue>
-    <processVue></processVue>
+    <!-- <treeVue></treeVue>
+    <processVue></processVue> -->
 </template>
 <script setup>
 import { defineAsyncComponent } from 'vue'
